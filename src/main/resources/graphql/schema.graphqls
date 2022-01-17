@@ -1,0 +1,10 @@
+type Query {
+    allUsers: [User]
+    user(id: Int): User
+}
+
+type User {
+    id: Int
+    username: String
+    password: String
+}
