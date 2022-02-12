@@ -21,6 +21,13 @@ public class GraphQLService {
     @Autowired
     private UserDatafetcher userDataFetcher;
 
+    @Autowired
+    private AllUsersDatafetcher allUsersDatafetcher;
+
+    @Autowired
+    private CreateUserDataFetcher createUserDataFetcher;
+
+
     @Value("classpath:/graphql/user.graphqls")
     private Resource resource;
 
@@ -39,7 +46,13 @@ public class GraphQLService {
         return RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring ->
                     typeWiring
-                            .dataFetcher("GetUser", userDataFetcher))
+                            .dataFetcher("GetUser", userDataFetcher)
+                            .dataFetcher("GetAllUsers", allUsersDatafetcher)
+                )
+                .type("Mutation", typeWiring ->
+                        typeWiring
+                                .dataFetcher("CreateUser", createUserDataFetcher)
+                        )
                 .build();
     }
 
