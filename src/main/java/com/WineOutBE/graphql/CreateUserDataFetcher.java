@@ -22,7 +22,6 @@ public class CreateUserDataFetcher implements DataFetcher<User> {
 
     @Autowired
     UserService userService;
-    private Object Role;
 
     @SneakyThrows
     @Override
