@@ -1,7 +1,10 @@
 package com.WineOutBE.Security;
 
+import com.WineOutBE.jwt.Secret;
+import com.WineOutBE.jwt.SecretService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -40,6 +42,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         System.out.println(username);
         System.out.println(password);
+        System.out.println(Secret.secret());
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
 
@@ -50,7 +53,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         User user = (User) authentication.getPrincipal();
 
-        Algorithm algorithm = Algorithm.HMAC256(SecretToken.getToken().getBytes());
+        Algorithm algorithm = Algorithm.HMAC256(Secret.secret().getBytes());
 
         String access_token = JWT.create()
                 .withSubject(user.getUsername())
