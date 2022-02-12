@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -43,6 +44,32 @@ public class UserResource {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
+
+    @PostMapping("/allusersdata")
+    public ResponseEntity<Object> allusers(@RequestBody String query) {
+        try {
+            ExecutionResult execute = graphQLService.getGraphQL().execute(query);
+            return new ResponseEntity<>(execute,HttpStatus.OK);
+        } catch(Exception e) {
+            System.out.print(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/impluser")
+    public ResponseEntity<Object> implUser(@RequestBody String query, Authentication auth) {
+
+        try {
+            ExecutionResult execute = graphQLService.getGraphQL().execute(query);
+            return new ResponseEntity<>(execute, HttpStatus.OK);
+
+        } catch(Exception e) {
+            System.out.println(e);
+
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       }
+   }
+
 
     @PostMapping("/testuser")
     public User createUser() {
