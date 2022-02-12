@@ -1,33 +1,65 @@
 package com.WineOutBE.Entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
+@NoArgsConstructor @AllArgsConstructor
 @Table(name="Users")
 public class User {
 
-    @OneToOne
-    private FriendID FID;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name= "id")
-    private int id;
+    private Long id;
 
-    @Column(name= "username")
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name= "username", unique = true)
     private String username;
 
     @Column(name= "password")
     private String password;
 
-    public int getId() {
+    @ManyToMany(fetch = EAGER)
+    private Collection<Role> roles = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "settingID", referencedColumnName = "settingID")
+    private DiarySettings diarySettings;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getUsername() {
@@ -46,11 +78,19 @@ public class User {
         this.password = password;
     }
 
-    public FriendID getFriendID() {
-        return FID;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setFID(FriendID FID) {
-        this.FID = FID;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
+    public DiarySettings getDiarySettings() {
+        return diarySettings;
+    }
+
+    public void setDiarySettings(DiarySettings diarySettings) {
+        this.diarySettings = diarySettings;
     }
 }

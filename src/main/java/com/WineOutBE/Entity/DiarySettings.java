@@ -1,15 +1,21 @@
 package com.WineOutBE.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "DiarySettings")
+@Table(name = "diary_settings")
 public class DiarySettings {
 
+    public DiarySettings() {
+        this.rating = false;
+        this.tannins = false;
+        this.acidity = false;
+        this.body = false;
+        this.comments = false;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "settingID")
     private int id;
 
@@ -27,7 +33,6 @@ public class DiarySettings {
 
     @Column(name = "comments")
     private boolean comments;
-
 
     public int getId() {
         return id;

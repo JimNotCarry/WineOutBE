@@ -1,65 +1,56 @@
 package com.WineOutBE.Entity;
 
-import org.checkerframework.checker.units.qual.C;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "PostSettings")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "diary_post", schema = "dbo")
 public class DiaryPost {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "Wine")
-    private String wine;
+    @Column(name = "winename")
+    private String winename;
 
-    @Column(name = "Date")
-    private String date;
-
-    @Column(name = "Vintage")
+    @Column(name = "vintage")
     private String vintage;
 
-    @Column(name = "Land")
-    private String land;
+    @Column(name = "producer")
+    private String producer;
 
-    @Column(name = "Region")
+    @Column(name = "percentage")
+    private String percentage;
+
+    @Column(name = "region")
     private String region;
 
-    @Column(name = "District")
+    @Column(name = "district")
     private String district;
 
-    @Column(name = "Grape")
+    @Column(name = "grape")
     private String grape;
 
-    @Column(name = "BottleImageUrl")
-    private String imageUrl;
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getWine() {
-        return wine;
+    public String getWinename() {
+        return winename;
     }
 
-    public void setWine(String wine) {
-        this.wine = wine;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setWinename(String winename) {
+        this.winename = winename;
     }
 
     public String getVintage() {
@@ -70,12 +61,20 @@ public class DiaryPost {
         this.vintage = vintage;
     }
 
-    public String getLand() {
-        return land;
+    public String getProducer() {
+        return producer;
     }
 
-    public void setLand(String land) {
-        this.land = land;
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+
+    public String getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(String percentage) {
+        this.percentage = percentage;
     }
 
     public String getRegion() {
@@ -100,13 +99,5 @@ public class DiaryPost {
 
     public void setGrape(String grape) {
         this.grape = grape;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 }
