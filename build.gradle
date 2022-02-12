@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.0-SNAPSHOT'
+	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
@@ -15,17 +15,26 @@ repositories {
 }
 
 dependencies {
-	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:11.0.0'
-	implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
-	implementation 'com.google.guava:guava:26.0-jre'
-	implementation 'com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	implementation 'com.graphql-java:graphql-spring-boot-starter:5.0.2'
+	implementation 'com.graphql-java:graphql-java-tools:5.2.4'
+	implementation 'com.graphql-java:graphiql-spring-boot-starter:5.0.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.6.3'
+	implementation 'com.auth0:java-jwt:3.18.3'
+	implementation 'com.microsoft.sqlserver:mssql-jdbc'
+	implementation "com.google.guava:guava:31.0.1-jre"
 
-	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.3'
+	testImplementation 'org.springframework.security:spring-security-test:5.5.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
