@@ -1,7 +1,6 @@
 package com.WineOutBE.graphql;
 
 import com.WineOutBE.Entity.DiarySettings;
-import com.WineOutBE.Entity.Role;
 import com.WineOutBE.Entity.User;
 import com.WineOutBE.Service.UserService;
 import com.WineOutBE.graphql.InputEntities.UserInput;
@@ -11,11 +10,6 @@ import graphql.schema.DataFetchingEnvironment;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Component
 public class CreateUserDataFetcher implements DataFetcher<User> {
