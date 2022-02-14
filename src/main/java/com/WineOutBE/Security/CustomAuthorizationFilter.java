@@ -38,7 +38,6 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
         } else {
             String authorizationToken = request.getHeader("Cookie");
 
-            System.out.println(authorizationToken);
             if (authorizationToken != null && authorizationToken.startsWith("access_token=")) {
 
                 try {
