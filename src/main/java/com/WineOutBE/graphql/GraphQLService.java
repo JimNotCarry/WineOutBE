@@ -27,6 +27,8 @@ public class GraphQLService {
     @Autowired
     private CreateUserDataFetcher createUserDataFetcher;
 
+    @Autowired
+    private DiaryPostUserDataFetcher diaryPostUserDataFetcher;
 
     @Value("classpath:/graphql/user.graphqls")
     private Resource resource;
@@ -52,7 +54,8 @@ public class GraphQLService {
                 .type("Mutation", typeWiring ->
                         typeWiring
                                 .dataFetcher("CreateUser", createUserDataFetcher)
-                        )
+                                .dataFetcher("DiaryPost", diaryPostUserDataFetcher)
+                )
                 .build();
     }
 

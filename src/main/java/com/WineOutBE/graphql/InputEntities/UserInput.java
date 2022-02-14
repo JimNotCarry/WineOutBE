@@ -1,5 +1,6 @@
 package com.WineOutBE.graphql.InputEntities;
 
+import com.WineOutBE.Entity.DiaryPost;
 import com.WineOutBE.Entity.DiarySettings;
 import com.WineOutBE.Entity.Role;
 import lombok.AllArgsConstructor;
@@ -25,4 +26,6 @@ public class UserInput {
     private Collection<Role> roles = new ArrayList<>();
 
     private DiarySettings diarySettings;
+
+    private Collection<DiaryPost> diaryPost = new ArrayList<>();
 }

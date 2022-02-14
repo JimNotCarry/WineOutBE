@@ -57,7 +57,7 @@ public class UserResource {
     }
 
     @PostMapping("/impluser")
-    public ResponseEntity<Object> implUser(@RequestBody String query, Authentication auth) {
+    public ResponseEntity<Object> implUser(@RequestBody String query) {
 
         try {
             ExecutionResult execute = graphQLService.getGraphQL().execute(query);
@@ -69,6 +69,24 @@ public class UserResource {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
        }
    }
+
+    @PostMapping("/diarypost")
+    public ResponseEntity<Object> diaryPost(@RequestBody String query, Authentication auth) {
+        try {
+            if (authQueries.CheckQueryValue(query)) {
+                query = authQueries.ChangeQueryValue(query, auth.getName());
+                ExecutionResult execute = graphQLService.getGraphQL().execute(query);
+                return new ResponseEntity<>(execute, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+
+        } catch(Exception e) {
+            System.out.println(e);
+
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
     @PostMapping("/testuser")

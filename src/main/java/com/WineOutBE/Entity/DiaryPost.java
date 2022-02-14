@@ -13,7 +13,7 @@ public class DiaryPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "diary_id")
     private Long id;
 
     @Column(name = "winename")

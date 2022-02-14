@@ -32,11 +32,14 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = EAGER)
-    private Collection<Role> roles = new ArrayList<>();
+    private Collection<Role> roles;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "settingID", referencedColumnName = "settingID")
     private DiarySettings diarySettings;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Collection<DiaryPost> diaryPost;
 
     public Long getId() {
         return id;
@@ -92,5 +95,13 @@ public class User {
 
     public void setDiarySettings(DiarySettings diarySettings) {
         this.diarySettings = diarySettings;
+    }
+
+    public Collection<DiaryPost> getDiaryPost() {
+        return diaryPost;
+    }
+
+    public void setDiaryPost(Collection<DiaryPost> diaryPost) {
+        this.diaryPost = diaryPost;
     }
 }

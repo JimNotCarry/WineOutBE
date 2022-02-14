@@ -1,11 +1,11 @@
 package com.WineOutBE.Service;
 
+import com.WineOutBE.Entity.DiaryPost;
 import com.WineOutBE.Entity.Role;
 import com.WineOutBE.Entity.User;
 import com.WineOutBE.Repo.RoleRepository;
 import com.WineOutBE.Repo.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -36,8 +36,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        user.getRoles().forEach(role ->
-                authorities.add(new SimpleGrantedAuthority(role.getName()))
+        user.getRoles().forEach(role -> {
+                    authorities.add(new SimpleGrantedAuthority(role.getName()));
+                }
         );
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorities);
     }
@@ -45,6 +46,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
         return userRepository.save(user);
     }
 
@@ -74,7 +80,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public Boolean checkUsername(String requestUsername, String credentialUsername) {
         return requestUsername.equals(credentialUsername);
     }
-
 //        public void createUser(String username, String password, FriendID FID) {
 //
 //            friendIDRepository.save(FID);
