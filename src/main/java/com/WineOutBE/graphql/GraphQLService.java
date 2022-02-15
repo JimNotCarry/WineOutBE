@@ -1,6 +1,7 @@
 package com.WineOutBE.graphql;
 
 import graphql.GraphQL;
+import graphql.scalars.ExtendedScalars;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -56,6 +57,9 @@ public class GraphQLService {
                                 .dataFetcher("CreateUser", createUserDataFetcher)
                                 .dataFetcher("DiaryPost", diaryPostUserDataFetcher)
                 )
+                .scalar(ExtendedScalars.Date)
+                .scalar(ExtendedScalars.DateTime)
+                .scalar(ExtendedScalars.GraphQLLong)
                 .build();
     }
 

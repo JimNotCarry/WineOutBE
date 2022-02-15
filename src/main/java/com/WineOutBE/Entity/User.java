@@ -1,10 +1,9 @@
-package com.WineOutBE.Entity;
+package com.WineOutBE.entity;
 
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import static javax.persistence.FetchType.EAGER;

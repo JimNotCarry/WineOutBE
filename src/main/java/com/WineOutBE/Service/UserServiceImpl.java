@@ -1,10 +1,9 @@
-package com.WineOutBE.Service;
+package com.WineOutBE.service;
 
-import com.WineOutBE.Entity.DiaryPost;
-import com.WineOutBE.Entity.Role;
-import com.WineOutBE.Entity.User;
-import com.WineOutBE.Repo.RoleRepository;
-import com.WineOutBE.Repo.UserRepository;
+import com.WineOutBE.entity.Role;
+import com.WineOutBE.entity.User;
+import com.WineOutBE.repo.RoleRepository;
+import com.WineOutBE.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
