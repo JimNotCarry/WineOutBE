@@ -1,4 +1,4 @@
-package com.WineOutBE.Security;
+package com.WineOutBE.security;
 
 import com.WineOutBE.jwt.Secret;
 import com.auth0.jwt.JWT;

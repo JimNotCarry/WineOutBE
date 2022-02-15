@@ -1,17 +1,18 @@
-package com.WineOutBE.Service;
+package com.WineOutBE.service;
 
-import com.WineOutBE.Entity.DiaryPost;
-import com.WineOutBE.Entity.User;
-import com.WineOutBE.graphql.InputEntities.DiaryInput;
+import com.WineOutBE.entity.DiaryPost;
+import com.WineOutBE.entity.User;
+import com.WineOutBE.graphql.inputEntities.DiaryInput;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 
 @Service
 public class DataFetcherServiceImpl implements DataFetcherService {
@@ -22,6 +23,7 @@ public class DataFetcherServiceImpl implements DataFetcherService {
     public <T> T objectMapper(DataFetchingEnvironment env, String arg, Class<T> reqClass) throws JsonProcessingException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.findAndRegisterModules();
 
             String input = objectMapper.writeValueAsString(env.getArgument(arg));
 
@@ -41,6 +43,8 @@ public class DataFetcherServiceImpl implements DataFetcherService {
         post.setProducer(newPost.getProducer());
         post.setPercentage(newPost.getPercentage());
         post.setGrape(newPost.getGrape());
+        post.setOccasionDate(newPost.getOccasionDate());
+        post.setPostDate(ZonedDateTime.now());
 
         User currentuser = userService.getUser(env.getArgument("username"));
 

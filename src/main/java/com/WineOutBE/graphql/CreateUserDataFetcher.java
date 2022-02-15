@@ -1,12 +1,12 @@
 package com.WineOutBE.graphql;
 
-import com.WineOutBE.Entity.DiarySettings;
-import com.WineOutBE.Entity.Role;
-import com.WineOutBE.Entity.User;
-import com.WineOutBE.Repo.RoleRepository;
-import com.WineOutBE.Service.DataFetcherServiceImpl;
-import com.WineOutBE.Service.UserService;
-import com.WineOutBE.graphql.InputEntities.UserInput;
+import com.WineOutBE.entity.DiarySettings;
+import com.WineOutBE.entity.Role;
+import com.WineOutBE.entity.User;
+import com.WineOutBE.repo.RoleRepository;
+import com.WineOutBE.service.DataFetcherServiceImpl;
+import com.WineOutBE.service.UserService;
+import com.WineOutBE.graphql.inputEntities.UserInput;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import lombok.SneakyThrows;

@@ -1,4 +1,4 @@
-package com.WineOutBE.Entity;
+package com.WineOutBE.entity;
 
 import javax.persistence.*;
 

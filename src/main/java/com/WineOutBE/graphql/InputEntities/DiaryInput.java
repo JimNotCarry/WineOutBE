@@ -1,8 +1,10 @@
-package com.WineOutBE.graphql.InputEntities;
+package com.WineOutBE.graphql.inputEntities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class DiaryInput {
@@ -14,4 +16,5 @@ public class DiaryInput {
     private String region;
     private String district;
     private String grape;
+    private LocalDate occasionDate;
 }

@@ -1,6 +1,6 @@
-package com.WineOutBE.Repo;
+package com.WineOutBE.repo;
 
-import com.WineOutBE.Entity.Role;
+import com.WineOutBE.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

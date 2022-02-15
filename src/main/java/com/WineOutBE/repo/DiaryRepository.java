@@ -1,6 +1,6 @@
-package com.WineOutBE.Repo;
+package com.WineOutBE.repo;
 
-import com.WineOutBE.Entity.DiaryPost;
+import com.WineOutBE.entity.DiaryPost;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

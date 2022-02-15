@@ -1,9 +1,12 @@
-package com.WineOutBE.Entity;
+package com.WineOutBE.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -36,6 +39,12 @@ public class DiaryPost {
 
     @Column(name = "grape")
     private String grape;
+
+    @Column(name = "occasion_date")
+    private LocalDate occasionDate;
+
+    @Column(name = "post_date")
+    private ZonedDateTime postDate;
 
     public Long getId() {
         return id;
@@ -99,5 +108,21 @@ public class DiaryPost {
 
     public void setGrape(String grape) {
         this.grape = grape;
+    }
+
+    public LocalDate getOccasionDate() {
+        return occasionDate;
+    }
+
+    public void setOccasionDate(LocalDate occasionDate) {
+        this.occasionDate = occasionDate;
+    }
+
+    public ZonedDateTime getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(ZonedDateTime postDate) {
+        this.postDate = postDate;
     }
 }

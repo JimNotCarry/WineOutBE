@@ -1,6 +1,4 @@
-package com.WineOutBE.Entity;
-
-import net.bytebuddy.utility.dispatcher.JavaDispatcher;
+package com.WineOutBE.entity;
 
 import javax.persistence.*;
 import java.util.Set;
