@@ -1,4 +1,4 @@
-package com.WineOutBE.Security;
+package com.WineOutBE.security;
 
 import org.springframework.stereotype.Service;
 

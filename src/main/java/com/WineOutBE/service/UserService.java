@@ -1,9 +1,7 @@
-package com.WineOutBE.Service;
+package com.WineOutBE.service;
 
-import com.WineOutBE.Entity.DiaryPost;
-import com.WineOutBE.Entity.Role;
-import com.WineOutBE.Entity.User;
-import org.springframework.http.ResponseEntity;
+import com.WineOutBE.entity.Role;
+import com.WineOutBE.entity.User;
 
 import java.util.List;
 

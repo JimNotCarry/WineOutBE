@@ -1,8 +1,8 @@
-package com.WineOutBE.graphql.InputEntities;
+package com.WineOutBE.graphql.inputEntities;
 
-import com.WineOutBE.Entity.DiaryPost;
-import com.WineOutBE.Entity.DiarySettings;
-import com.WineOutBE.Entity.Role;
+import com.WineOutBE.entity.DiaryPost;
+import com.WineOutBE.entity.DiarySettings;
+import com.WineOutBE.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

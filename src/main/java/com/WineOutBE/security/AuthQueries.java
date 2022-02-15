@@ -1,4 +1,4 @@
-package com.WineOutBE.Security;
+package com.WineOutBE.security;
 
 public interface AuthQueries {
     Boolean CheckQueryValue(String query);

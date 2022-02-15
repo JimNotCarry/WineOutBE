@@ -1,8 +1,8 @@
-package com.WineOutBE.Service;
+package com.WineOutBE.service;
 
-import com.WineOutBE.Entity.DiaryPost;
-import com.WineOutBE.Entity.User;
-import com.WineOutBE.graphql.InputEntities.DiaryInput;
+import com.WineOutBE.entity.DiaryPost;
+import com.WineOutBE.entity.User;
+import com.WineOutBE.graphql.inputEntities.DiaryInput;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import graphql.schema.DataFetchingEnvironment;
 

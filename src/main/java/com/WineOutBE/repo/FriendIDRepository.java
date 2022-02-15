@@ -1,6 +1,6 @@
-package com.WineOutBE.Repo;
+package com.WineOutBE.repo;
 
-import com.WineOutBE.Entity.FriendID;
+import com.WineOutBE.entity.FriendID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

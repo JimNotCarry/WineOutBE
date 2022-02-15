@@ -1,9 +1,9 @@
 package com.WineOutBE.api;
 
-import com.WineOutBE.Entity.DiarySettings;
-import com.WineOutBE.Entity.User;
-import com.WineOutBE.Security.AuthQueries;
-import com.WineOutBE.Service.UserService;
+import com.WineOutBE.entity.DiarySettings;
+import com.WineOutBE.entity.User;
+import com.WineOutBE.security.AuthQueries;
+import com.WineOutBE.service.UserService;
 import com.WineOutBE.graphql.GraphQLService;
 import graphql.ExecutionResult;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -33,8 +32,6 @@ public class UserResource {
     public ResponseEntity<Object> getData(@RequestBody String query, HttpServletRequest req, Authentication auth) {
 
         boolean check = authQueries.CheckQueryValue(query);
-
-        System.out.println(query);
 
         if (check) {
             query = authQueries.ChangeQueryValue(query, auth.getName());

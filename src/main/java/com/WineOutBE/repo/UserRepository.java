@@ -1,8 +1,7 @@
-package com.WineOutBE.Repo;
+package com.WineOutBE.repo;
 
-import com.WineOutBE.Entity.User;
+import com.WineOutBE.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 @Repository
