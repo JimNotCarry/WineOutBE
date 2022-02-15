@@ -1,15 +1,18 @@
 package com.WineOutBE.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tasting_notes")
 public class TastingNotes {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "notes_id")
     private Long notesID;
 
