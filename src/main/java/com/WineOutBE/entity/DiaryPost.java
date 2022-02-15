@@ -46,6 +46,10 @@ public class DiaryPost {
     @Column(name = "post_date")
     private ZonedDateTime postDate;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "notes_id", referencedColumnName = "notes_id")
+    private TastingNotes tastingNotes;
+
     public Long getId() {
         return id;
     }
@@ -124,5 +128,13 @@ public class DiaryPost {
 
     public void setPostDate(ZonedDateTime postDate) {
         this.postDate = postDate;
+    }
+
+    public TastingNotes getTastingNotes() {
+        return tastingNotes;
+    }
+
+    public void setTastingNotes(TastingNotes tastingNotes) {
+        this.tastingNotes = tastingNotes;
     }
 }

@@ -9,10 +9,8 @@ import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 @Service
 public class DataFetcherServiceImpl implements DataFetcherService {
@@ -43,6 +41,7 @@ public class DataFetcherServiceImpl implements DataFetcherService {
         post.setProducer(newPost.getProducer());
         post.setPercentage(newPost.getPercentage());
         post.setGrape(newPost.getGrape());
+        post.setTastingNotes(newPost.getTastingNotes());
         post.setOccasionDate(newPost.getOccasionDate());
         post.setPostDate(ZonedDateTime.now());
 

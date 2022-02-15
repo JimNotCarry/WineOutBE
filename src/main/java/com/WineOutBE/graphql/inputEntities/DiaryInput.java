@@ -1,5 +1,6 @@
 package com.WineOutBE.graphql.inputEntities;
 
+import com.WineOutBE.entity.TastingNotes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,5 @@ public class DiaryInput {
     private String district;
     private String grape;
     private LocalDate occasionDate;
+    private TastingNotes tastingNotes;
 }
