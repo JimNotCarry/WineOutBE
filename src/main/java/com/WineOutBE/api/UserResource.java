@@ -54,24 +54,6 @@ public class UserResource {
         }
     }
 
-//    @GetMapping("/randomnumber")
-//    public String getrandomnumber() {
-//        StringBuilder id = new StringBuilder();
-//
-//        for(int index = 0; index <= 5; index++) {
-//
-//            int randomType = (int) (Math.random() * 2);
-//
-//            System.out.println(randomType);
-//
-//            char character = (randomType == 0) ? userService.generateCharacter() : userService.generateNumber();
-//
-//            id.append(character);
-//        }
-//
-//        return id.toString();
-//    }
-
     @GetMapping("/getallusersdata")
     public List<User> getAllUserData() {
 
@@ -122,7 +104,7 @@ public class UserResource {
     }
 
     @GetMapping("/sendfriendrequest")
-    public void friendRequest(@RequestParam (required = true) String friendid, Authentication auth) {
+    public ResponseEntity<Object> friendRequest(@RequestParam (required = true) String friendid, Authentication auth) {
         FriendRequest friendRequest = new FriendRequest();
 
         try {
@@ -134,15 +116,18 @@ public class UserResource {
 
             if(userlist.size() > 0 || friendRequestList != null) {
                 System.out.println("Already exists");
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
             } else {
                 System.out.println("Doesn't exists");
                 friendRequest.setRequester(requester.getFriendID().getId());
                 friendRequest.setReciever(reciever.getFriendID().getId());
 
                 friendRequestRepository.save(friendRequest);
+                return new ResponseEntity<>(HttpStatus.OK);
             }
         } catch (Exception e) {
             System.out.println(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
