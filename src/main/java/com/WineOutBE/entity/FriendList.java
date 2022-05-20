@@ -1,19 +1,37 @@
 package com.WineOutBE.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "FriendList")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "friendList")
 public class FriendList {
 
-    @ManyToMany(targetEntity = FriendID.class)
-    private Set friendID;
-
     @Id
-    @Column(name = "UserFID")
-    private String UserFID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "FID")
-    private String FID;
+    @Column(name = "friendId")
+    private String friendId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFriendId() {
+        return friendId;
+    }
+
+    public void setFriendId(String friendId) {
+        this.friendId = friendId;
+    }
 }

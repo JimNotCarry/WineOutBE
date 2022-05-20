@@ -1,5 +1,6 @@
 package com.WineOutBE.service;
 
+import com.WineOutBE.entity.DiaryPost;
 import com.WineOutBE.entity.Role;
 import com.WineOutBE.entity.User;
 import com.WineOutBE.repo.RoleRepository;
@@ -13,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -49,8 +52,24 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User savePost(String username, DiaryPost post) {
+        User user = userRepository.findByUsername(username);
+        post.setPostDate(ZonedDateTime.now());
+        user.getDiaryPost().add(post);
+
+        return userRepository.save(user);
+    }
+
+    @Override
     public User updateUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<DiaryPost> posts(String username) {
+        User user = userRepository.findByUsername(username);
+
+        return (List<DiaryPost>) user.getDiaryPost();
     }
 
     @Override
@@ -71,6 +90,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User getUserByFriendID(String friendId) {
+        return userRepository.findByFriendId(friendId);
+    }
+
+    @Override
     public List<User> getUsers() {
         return userRepository.findAll();
     }
@@ -79,23 +103,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public Boolean checkUsername(String requestUsername, String credentialUsername) {
         return requestUsername.equals(credentialUsername);
     }
-//        public void createUser(String username, String password, FriendID FID) {
-//
-//            friendIDRepository.save(FID);
-//
-//            User user = new User();
-//
-//            user.setFID(FID);
-//
-//            user.setUsername(username);
-//            user.setPassword(password);
-//
-//
-//            userRepository.save(user);
-//
-//        }
-//
-//        public List<User> getAllUsers() {
-//            return userRepository.findAll();
-//        }
+
+    @Override
+    public List<String> searchUser(String username) {
+        return userRepository.search(username);
+    }
+
 }

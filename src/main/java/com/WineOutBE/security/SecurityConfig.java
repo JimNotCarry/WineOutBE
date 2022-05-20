@@ -40,9 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.cors();
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/api/testuser").permitAll();
+        //http.authorizeRequests().antMatchers("/api/testuser").permitAll();
         http.authorizeRequests().antMatchers("/api/impluser").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
+        //http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().anyRequest().permitAll();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }

@@ -34,8 +34,15 @@ public class User {
     private Collection<Role> roles;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "FriendID", referencedColumnName = "FriendID")
+    private FriendID friendID = new FriendID();
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "settingID", referencedColumnName = "settingID")
     private DiarySettings diarySettings;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Collection<FriendList> friendList;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Collection<DiaryPost> diaryPost;
@@ -102,5 +109,21 @@ public class User {
 
     public void setDiaryPost(Collection<DiaryPost> diaryPost) {
         this.diaryPost = diaryPost;
+    }
+
+    public Collection<FriendList> getFriendList() {
+        return friendList;
+    }
+
+    public void setFriendList(Collection<FriendList> friendList) {
+        this.friendList = friendList;
+    }
+
+    public FriendID getFriendID() {
+        return friendID;
+    }
+
+    public void setFriendID(FriendID friendID) {
+        this.friendID = friendID;
     }
 }
