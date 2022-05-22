@@ -38,3 +38,4 @@ out/
 
 resources/
 /src/main/java/com/WineOutBE/jwt/
+src/main/java/com/WineOutBE/security/AWS.java

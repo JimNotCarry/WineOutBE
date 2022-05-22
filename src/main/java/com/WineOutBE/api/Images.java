@@ -1,5 +1,6 @@
 package com.WineOutBE.api;
 
+import com.WineOutBE.security.AWS;
 import com.WineOutBE.service.UserService;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -26,16 +27,8 @@ public class Images {
 
     private final UserService userService;
 
-    AWSCredentials credentials = new BasicAWSCredentials(
-            "AKIA5MCS6GPMXD4ZC5KO",
-            "68FfIarE2TN54R/royij5rW+gM1wda306ovg6V5F"
-    );
+    private final AWS aws = new AWS();
 
-    AmazonS3 s3client = AmazonS3ClientBuilder
-            .standard()
-            .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion("us-east-1")
-            .build();
 
     @PostMapping(path = "/postImages")
     public void uploadHeaderImage(Authentication auth, @RequestParam("occasiondate") String occasiondate, @RequestPart("file") MultipartFile file) throws IOException {
@@ -50,7 +43,7 @@ public class Images {
         metadata.forEach(objectMetadata::addUserMetadata);
 
         try {
-            s3client.putObject("wineout","Pictures/" + auth.getName() + "/" + occasiondate + "/header.jpg", file.getInputStream(), objectMetadata);
+            aws.getS3client().putObject("wineout","Pictures/" + auth.getName() + "/" + occasiondate + "/header.jpg", file.getInputStream(), objectMetadata);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -61,7 +54,7 @@ public class Images {
 
         String keyname = "Pictures/" + auth.getName() + "/" + occasionDate + "/header.jpg";
 
-        S3Object object = s3client.getObject("wineout", keyname);
+        S3Object object = aws.getS3client().getObject("wineout", keyname);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
